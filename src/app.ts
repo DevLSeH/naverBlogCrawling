@@ -8,6 +8,7 @@ interface blogBody {
 };
 
 const blogBodys = async (firstUrl: string) => {
+//게시물에 접근할 수 있는 진짜 url을 얻는다
     const url = firstUrl.toString();
     const urlParse = url.split('/');
     const blogId = urlParse[3];
@@ -16,7 +17,7 @@ const blogBodys = async (firstUrl: string) => {
     const originUrl = `https://blog.naver.com/PostView.naver?blogId=${blogId}&logNo=${postId}&redirect=Dlog&widgetTypeCall=true&directAccess=false`;
 
     axios({
-        //<iframe> 속의 src 링크에 "https://blog.naver.com" 추가하여 url 입력
+        
         url: originUrl,
         method: "GET",
     })
@@ -37,9 +38,9 @@ const blogBodys = async (firstUrl: string) => {
             const img = rawImg.replace("type=w80_blur", "type=w966");
             console.log(img);
 
-            const blogBody = {
+            const blogBody : blogBody = {
                 postBody: body,
-                postImgUrl: img
+                postImgUrl: new URL(img)
             };
 
             console.log(blogBody);
