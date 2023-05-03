@@ -1,0 +1,22 @@
+{
+  "name": "naver_blog_crawling",
+  "version": "1.0.0",
+  "description": "네이버 블로그 내용을 가져온다",
+  "main": "src/app.ts",
+  "author": "shaan",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "start": "node ./bin/app.js",
+    "dev": "ts-node ./src/app.ts"
+  },
+  "dependencies": {
+    "@types/node": "^18.16.3",
+    "axios": "^1.4.0",
+    "cheerio": "^1.0.0-rc.12",
+    "typescript": "^5.0.4"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.1"
+  }
+}
