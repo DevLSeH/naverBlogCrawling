@@ -29,8 +29,13 @@ const blogBodys = async (firstUrl: string) => {
     const list: (string | undefined)[] = [];
     const $visitcnt = cheerio.load(visitorData);
     const visitors = $visitcnt("visitorcnt").toArray().map(element => element.attribs);
-    const visitor = visitors.map(element => element.cnt)
+    const visitor = visitors.map(element => Number(element.cnt))
     console.log(visitor);
+    console.log(visitor.sort(function (a, b) {
+        return b - a;
+    }));
+
+
 
     const $ = cheerio.load(data);
     // const $title = $("p.se-text-paragraph");
@@ -47,7 +52,8 @@ const blogBodys = async (firstUrl: string) => {
 
     const blogBody = {
         postBody: body,
-        postImgUrl: img
+        postImgUrl: img,
+        visitor: visitor,
     };
     return blogBody;
 
